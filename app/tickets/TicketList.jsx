@@ -5,7 +5,7 @@ async function getTickets(){
   // imitate delay
   await new Promise(resolve => setTimeout(resolve, 3000))
   // the data are feched one time on the server ,cashe it and reuse it every time so that we use revalidate to refetch the data   
-  const res = await fetch("http://localhost:3000/api/data", {
+  const res = await fetch("/api/data", {
       next: {
         revalidate: 0 // 0 to opt out of using cache
       }
