@@ -2,19 +2,18 @@ import {Suspense} from 'react';
 import Loading from '../../loading';
 
 export async function generateStaticParams(){
-    const res = await fetch('http://localhost:8000/tickets')
+    const tickets = await fetch('http://localhost:3000/api/data').then((res) => res.json());
 
-    const tickets = await res.json()
     
     return tickets.map((ticket)=> ({
-        id: ticket.id
+        id: ticket.id,
     }))
 }
 
 async function getTicket(id){
     await new Promise((resolve) => setTimeout(resolve, 3000))
     
-    const res = await fetch("http://localhost:8000/tickets/"+ id, {
+    const res = await fetch("http://localhost:3000/api/data/"+ id, {
         next: {
           revalidate: 60
         }

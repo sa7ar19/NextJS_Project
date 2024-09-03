@@ -18,7 +18,7 @@ export default function CreateForm(){
             title , body, priority, user_email: 'Sa7ar@g.dev'
         }
 
-        const res = await fetch('http://localhost:8000/tickets', {
+        const res = await fetch('http://localhost:3000/api/data', {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(ticket)
